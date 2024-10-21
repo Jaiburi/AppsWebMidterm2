@@ -1,0 +1,58 @@
+<%- include("partials/header"); -%>
+
+<%- include("partials/search"); -%>
+
+<div class="pokemon-grid">
+    <% if (locals.pokemonList && pokemonList.length > 0) { %>
+        <% pokemonList.forEach(pokemon => { %>
+            <a href="/about?id=<%= pokemon.id %>" class="pokemon-link">
+                <div class="pokemon_card">
+                    <div class="pokemon_card_info">
+                        <div class="pokemon_card_name">
+                            <div class="pokemon_card_id_container">
+                                <img src="./img/pokeball_for_card.png" alt="">
+                                <p class="pokemon_card_id">#<%= pokemon.id %></p>
+                            </div>
+                            <p><%= pokemon.name %></p>
+                            <p><%= pokemon.base_experience %> exp</p>
+                        </div>
+                        <div class="pokemon_card_image">
+                            <img src="<%= pokemon.sprites.front_default %>" alt="<%= pokemon.name %>" onerror="this.onerror=null; this.src='../public/imag/pokemonplaceholder.jpg';" />
+                        </div>
+                        <div class="pokemon_card_type">
+                            <p><%= pokemon.weight/10 %> kg</p> 
+                            <p><%= pokemon.types.map(type => type.type.name).join(', ') %></p>
+                            <p><%= pokemon.height/10 %> m</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+    <% } else if (locals.error) { %>
+        <p><%= error %></p>
+    <% } %>
+</div>
+
+<nav class="pagination" aria-label="Page navigation">
+    <ul>
+        <% if (currentPage > 1) { %>
+            <li><a href="/?page=<%= currentPage - 1 %>" class="pagination-button">&laquo; Previous</a></li>
+        <% } %>
+        
+        <% for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) { %>
+            <li>
+                <% if (i === currentPage) { %>
+                    <span class="pagination-current" aria-current="page"><%= i %></span>
+                <% } else { %>
+                    <a href="/?page=<%= i %>" class="pagination-button"><%= i %></a>
+                <% } %>
+            </li>
+        <% } %>
+        
+        <% if (currentPage < totalPages) { %>
+            <li><a href="/?page=<%= currentPage + 1 %>" class="pagination-button">Next &raquo;</a></li>
+        <% } %>
+    </ul>
+</nav>
+
+<%- include("partials/footer"); -%>

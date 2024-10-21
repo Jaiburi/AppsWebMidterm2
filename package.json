@@ -1,0 +1,32 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "Express showcase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaime R",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "form-data": "^4.0.1",
+    "https": "^1.0.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
+    "nodemon": "^3.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iker-JS/pokedex_midterm.git"
+  },
+  "keywords": [
+    "pokedex"
+  ],
+  "bugs": {
+    "url": "https://github.com/Iker-JS/pokedex_midterm/issues"
+  },
+  "homepage": "https://github.com/Iker-JS/pokedex_midterm#readme"
+}

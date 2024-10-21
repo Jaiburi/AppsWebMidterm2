@@ -1,0 +1,55 @@
+<%- include("partials/header"); -%>
+    <img src="./img/Captura de pantalla (1).png" alt="SS" width="200px"/>
+    <h1>BMI Calculator</h1>
+    <p>Hello <%= name %></p>
+    <a href="/joke">Tell me a joke</a>
+    <p><%= joke %></p>
+    <!--ESTE ES EL FORM, MUY IMPORTANTE-->
+    <form action="/" method="POST"><!--El / es el que manda al js junto con
+        el POST method, eso te lleva a la función que se encarga
+        de las operaciones-->
+        <input type="number" name="weight" placeholder="weight"/>
+        <!--name es lo que te conecta a las variables del js, el nombre tiene
+        que ser igual, por ejempo si (name="perro") entonces la variable se
+        definiría (var *este nombre no importa* =req.body.perro), el último es
+        el nombre que le pones a la variable-->
+        <input type="number" name="height" placeholder="height"/> 
+        <button type="submit" name="submit">Calculate BMI</button>   
+    </form>
+    <hr/>
+    <form action="/add" method="POST">
+        <input type="text" name="item" placeholder="New item for list"/>
+        <input type="text" name="qty" value="1"/>
+        <button type="submit" name="submit">Add to list</button>
+    </form>
+    <% if(locals.shoppingList && shoppingList.length !=0){
+        var listTitle = "Shopping List";
+        var genericList = shoppingList;
+         %>
+        <%- include("partials/list", {listTitle, genericList}); -%>
+    <% } %>
+
+    <h2>Dictionary check</h2>
+    <hr/>
+    <form action="/check" method="POST">
+        <input type="text" name="word" placeholder="Word to check"/>
+        <button type="submit" name="submit">Check</button>
+    </form>
+    <% if(locals.checked){ %>
+        <p><%= checked %></p>
+    <% } %>
+
+    <h2>Students</h2>
+    <% students.forEach((student) => { %>
+        <div>
+            <h1><%= student.name %> (ID: <%= student.id %>)</h1>
+            <p><%= student.age %></p>
+            <hr/>
+        </div>
+    <% }); %>
+    <div>
+        <h1>"name" (ID: "id")</h1>
+        <p>"age"</p>
+        <hr/>
+    </div>
+<%- include("partials/footer"); -%>

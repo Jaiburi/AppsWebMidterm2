@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+<div>
+    <%- include("partials/search"); -%>
+
+    <div id="button_backward_forward_container">
+        <form action="/navigate" method="POST">
+            <input type="hidden" name="direction" value="prev">
+            <input type="hidden" name="currentId" value="<%= locals.pokemonData ? pokemonData.id : 0 %>">
+            <button type="submit" class="button_backward_forward"><i class="fa-solid fa-left-long"></i></button>
+        </form>
+        
+        <form action="/navigate" method="POST" >
+            <input type="hidden" name="direction" value="next">
+            <input type="hidden" name="currentId" value="<%= locals.pokemonData ? pokemonData.id : 0 %>">
+            <button type="submit" class="button_backward_forward"><i class="fa-solid fa-right-long"></i></button>
+        </form>
+    </div>
+
+    <% if (locals.found && locals.pokemonData) { %>
+            
+            <%- include("partials/pokemon_form"); %>
+
+        <% } else if (!locals.found && locals.pokemonName) { %>
+            <p>Unknown option for "<%= locals.pokemonName %>", try it again.</p>
+        <% } %>
+
+        <% if (locals.error) { %>
+            <p>Error: <%= locals.error %></p>
+        <% } %>
+
+    </main>
+</div>
+<%- include("partials/footer"); -%>

@@ -1,0 +1,27 @@
+<% if(locals.pokemonData){ %>
+    <div class="pokemon_card_info">
+                    
+        <div class="pokemon_card_name">
+            
+            <div class="pokemon_card_id_container">
+
+                <img src="./img/pokeball_for_card.png" alt="">
+                <p class="pokemon_card_id">#<%= pokemonData.id %></p>
+                
+            </div>
+
+            <p><%= pokemonData.name %></p>
+            <p><%= pokemonData.base_experience %> exp</p>
+        </div>
+        
+        <div class="pokemon_card_image">
+            <img src="<%= pokemonData.sprites.front_default %>" alt="<%= pokemonData.name %>" onerror="this.onerror=null; this.src='../public/imag/pokemonplaceholder.jpg';" />
+        </div>
+
+        <div class="pokemon_card_type">
+            <p><%= pokemonData.weight/10 %> kg</p> 
+            <p><%= pokemonData.types.map(type => type.type.name).join(', ') %></p>
+            <p><%= pokemonData.height/10 %> m</p>
+        </div>
+    </div>
+<% } %>

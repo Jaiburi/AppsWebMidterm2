@@ -1,0 +1,9 @@
+<h2>Shopping List</h2>
+    <ul>
+        <% shoppingList.forEach((item, index) => { %>
+            <li><a href="/remover/<%= index %>">
+            <i class="fa-solid fa-trash-can"></i>
+            </a><%= item.itemQty %><%= item.itemName %> </li>
+        <%}); %>
+    </ul>
+    <hr/>

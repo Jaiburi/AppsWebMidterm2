@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="./css/Style.css"/>
+</head>
+<body>
+    <img src="./img/Captura de pantalla (1).png" alt="SS" width="200px"/>
+    <h1>BMI Calculator</h1>
+    <!--ESTE ES EL FORM, MUY IMPORTANTE-->
+    <form action="/" method="POST"><!--El / es el que manda al js junto con
+        el POST method, eso te lleva a la función que se encarga
+        de las operaciones-->
+        <input type="number" name="weight" placeholder="weight"/>
+        <!--name es lo que te conecta a las variables del js, el nombre tiene
+        que ser igual, por ejempo si (name="perro") entonces la variable se
+        definiría (var *este nombre no importa* =req.body.perro), el último es
+        el nombre que le pones a la variable-->
+        <input type="number" name="height" placeholder="height"/> 
+        <button type="submit" name="submit">Calculate BMI</button>   
+    </form>
+</body>
+</html>
